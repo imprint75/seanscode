@@ -20,7 +20,7 @@ def render_menu(request, categories=None):
 
     pages = [
         { "page_title" : "Main", "link" : "home" },
-        { "page_title" : "Music Search" , "link" : "experiments" },
+        { "page_title" : "Music Search" , "link" : "experiments/music_search" },
         { "page_title" : "Work" , "link" : "work" },
         { "page_title" : "Info" , "link" : "info" }
     ]
