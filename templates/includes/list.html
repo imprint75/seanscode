@@ -1,0 +1,23 @@
+<div class="container_12">
+
+  <ul class="item_list">
+    {% for key, value in items %}
+
+    <li class="searchres">Artist : {{ key }}</li>
+
+    <ul class="inner_item_list">
+    {% for item in value %}
+
+      {% if item != "No blogs found" %}
+      <li><a href="{{ item.url }}" target="_blank">{{ item.name }}</a></li>
+      {% else %}
+      <li>No blog entires found</li>		
+      {% endif %}
+
+    {% endfor %}
+    </ul>
+
+    {% endfor %}
+  </ul>
+
+</div>

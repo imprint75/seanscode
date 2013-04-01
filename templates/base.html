@@ -1,0 +1,30 @@
+{% load maintags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% get_static_prefix %}css/960gs/960.css" type="text/css" />
+    <link rel="stylesheet" href="{% get_static_prefix %}css/960gs/960_12_col.css" type="text/css" />
+    <link rel="stylesheet" href="{% get_static_prefix %}css/main.css" type="text/css" />
+    <title>{% block title %}Consider this{% endblock %}</title>
+</head>
+<body>
+    <div class="container_12">  
+      <div id="header">
+	<div class="grid_12 main_nav">
+	  {% block sidebar %}
+		{% render_menu request %}
+	  {% endblock %}
+	</div>
+      </div>
+      {% block content %}
+      <div id="content">
+	<div class="grid_12 top_section">{{ message|default:"Welcome" }}</div>
+      </div>
+      {% endblock %}
+      <div class="clear"></div>  
+    </div>  
+</body>
+<script src="{% get_static_prefix %}/js/jquery-1.7.2.min.js"></script>
+<script src="{% get_static_prefix %}/js/site-js.js"></script>
+</html>

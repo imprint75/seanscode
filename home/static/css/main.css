@@ -1,0 +1,81 @@
+body { 
+    padding : 0px; 
+    background-color: black;
+    color: white;
+    font-family: verdana;
+    font-size: 14px;
+}
+
+a { 
+    text-decoration: None;
+    color: #A5A1A1;
+}
+
+a:hover { 
+    text-decoration: None;
+    color: white;
+}
+
+li {
+    list-style:none;
+    text-decoration: None;
+    color: white;
+}
+
+.main_nav ul li {
+    display:inline; 
+    height:30px; 
+    float:left; 
+    list-style:none;
+    margin-right:15px;
+    text-decoration: None;
+    color: white;
+}
+
+.menu {
+    width:100%;
+    height:30px;
+    padding : 0px;
+}
+
+#header {
+    height: 100px;
+}
+
+.top_section {
+
+}
+
+.search_container {
+    height: 57px;
+}
+
+.search {
+    margin-bottom: 30px;
+}
+
+.search_h1 {
+    font-weight: 300; 
+    color: #A5A1A1;
+}
+
+.searchres {
+    color: #2A74E4;
+}
+
+.item_list {
+    padding-left: 10px;
+}
+
+.inner_item_list {
+    margin: 13px;
+}
+
+.darkStyled { 
+    background-color: #000000; 
+    border: 1px solid #D6CDC7;
+    height: 23px; 
+    width: 200px; 
+    color: #ffffff; 
+    font-size: 15px; 
+}
