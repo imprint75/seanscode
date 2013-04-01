@@ -1,32 +1,34 @@
-import datetime
 import logging
-import json
-import urllib
-import urllib2
+import requests
 
 from django.conf import settings
 from django.utils import simplejson
 
+logger = logging.getLogger('apps')
+
 def _make_call(options, *args, **kwargs):
-    url = "{}{}/{}?api_key={}&name={}&format=json".format(settings.ECHO_NEST_BASE_URL,
-                                                          options['type'],
-                                                          options['action'],
-                                                          settings.EN_API_KEY,
-                                                          options['value'])
 
-    jsonResponse = json.loads(urllib2.urlopen(url).read())
+    params = '&'.join(['api_key={}'.format(settings.EN_API_KEY),
+                       'name={}'.format(options['value']),
+                       'format=json'])
 
-    if jsonResponse['response']['status']['message'] == "Success":
-        return jsonResponse['response']
+    r = requests.get('{}{}/{}?{}'.format(settings.ECHO_NEST_BASE_URL,
+                                         options['type'],
+                                         options['action'],
+                                         params))
+    res = r.json()
+
+    if res['response']['status']['message'] == "Success":
+        return res['response']
     else:
         return None
 
 
-def echo_lookup(name = None, type = "artist"):
-    results = _make_call({"type" : type,
+def echo_lookup(name = None, type_ = "artist"):
+    results = _make_call({"type" : type_,
                           "action" : "search",
                           "value" : name})
-    return results[''.join([type, 's'])]
+    return results[''.join([type_, 's'])]
 
 
 def echo_artist_info(id, method = "images"):
