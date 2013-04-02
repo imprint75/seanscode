@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'common/base.html' %}
 
 {% load maintags %}
 
@@ -12,7 +12,7 @@
     <div class="grid_12 search">
       <form action="." method="post">
         {% csrf_token %}
-	<input class="txtClass darkStyled" name="artist_search" type="text" value="search again" defaultVal="search again" />
+        <input class="txtClass darkStyled" name="artist_search" type="text" value="search again" defaultVal="search again" />
         <input type="submit" />
       </form>
     </div>

@@ -1,0 +1,26 @@
+{% extends 'common/base.html' %}
+
+{% load maintags %}
+
+{% block title %}
+  {{ title|default:"Welcome" }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container_12 top_section">
+    <div class="grid_12 search">
+      <form action="." method="post">
+        {% csrf_token %}
+        <input class="txtClass darkStyled" name="artist_search" type="text" value="search again" defaultVal="search again" />
+        <input type="submit" />
+      </form>
+    </div>
+    <div class="grid_12 search_container">
+      <h1 class="search_h1">Search results for <span class="searchres">{{ main_search }}</span></h1>
+    </div>
+</div>
+
+{% render_list request info.items %}
+
+{% endblock %}
