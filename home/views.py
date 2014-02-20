@@ -8,7 +8,7 @@ from django.template import RequestContext
 
 from home.decorators import login_check
 
-logger = logging.getLogger('apps')
+logger = logging.getLogger(__name__)
 
 @login_check
 def index(request):
