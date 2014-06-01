@@ -17,23 +17,14 @@ CACHES = {
 }
 
 TIME_ZONE = 'America/Chicago'
-
 LANGUAGE_CODE = 'en-us'
-
 SITE_ID = 1
-
 USE_I18N = True
-
 USE_L10N = True
-
 MEDIA_ROOT = ''
-
 MEDIA_URL = ''
-
 STATIC_ROOT = '/home/sean/public_html/seanscode/public/static/'
-
 STATIC_URL = '/static/'
-
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 STATICFILES_DIRS = (
@@ -64,9 +55,7 @@ MIDDLEWARE_CLASSES = (
 
 
 SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
-
 ROOT_URLCONF = 'seanscode.urls'
-
 TEMPLATE_DIRS = (
     os.path.join(SETTINGS_PATH, 'templates'),
 )
@@ -118,10 +107,10 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'apps' : {
-            'handlers' : ['console'],
-            'level' : 'DEBUG',
-            'propagate' : True,
+        'apps': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
         }
     }
 }
