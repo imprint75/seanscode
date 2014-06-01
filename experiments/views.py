@@ -11,7 +11,7 @@ from django.template.defaultfilters import slugify
 from home.decorators import login_check
 from lib.EchoNest import echo_get_artist, echo_lookup, echo_artist_info
 
-logger = logging.getLogger('apps')
+logger = logging.getLogger(__name__)
 
 @login_check
 def index(request):

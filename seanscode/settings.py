@@ -26,7 +26,6 @@ MEDIA_URL = ''
 STATIC_ROOT = '/home/sean/public_html/seanscode/public/static/'
 STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
-
 STATICFILES_DIRS = (
     '/home/sean/public_html/seanscode/public/seanscode/home/static/',
 )
@@ -53,11 +52,11 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-
-SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
 ROOT_URLCONF = 'seanscode.urls'
+TEMPLATE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
+
 TEMPLATE_DIRS = (
-    os.path.join(SETTINGS_PATH, 'templates'),
+    os.path.join(TEMPLATE_PATH, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -76,41 +75,38 @@ INSTALLED_APPS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
     'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-            },
-        'simple': {
-            'format': '%(module)s %(process)d %(levelname)s %(message)s'
-            }
+        'standard': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%Y-%m-%d %H:%M:%S",
+        },
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console': {
+        'file': {
             'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        }
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/nginx/error.log',
+            'formatter': 'standard',
+        },
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'handlers': ['file'],
+            'level': 'DEBUG',
             'propagate': True,
         },
-        'apps': {
-            'handlers': ['console'],
+        '': {
+            'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
         }
-    }
+    },
 }
+
+# Echo Nest stuff
+ECHO_NEST_BASE_URL = "http://developer.echonest.com/api/v4/"
+EN_API_KEY = "OQWDHF6YVR619QHIA"
+EN_CONSUMER_KEY = "81ad5073e9e9bf0dd989e8709580b376"
+EN_SHARED_SECRET = "nEgXhmTsREOxjoETdkFqDw"
+EN_USERNAME = 'sean'
+DEFAULT_ARTIST = "Kassem Mosse"
